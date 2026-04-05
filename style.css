@@ -1,0 +1,346 @@
+/* 全域設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('bg-pattern.png') repeat; /* 這裡換成你的背景圖 */
+    background-color: #f4f4f4;
+}
+
+/* 封面與頭像 */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.cover-photo {
+    width: 100%;
+    height: 100%;
+    background: #333 url('image/cha-no.PNG') center/cover;
+}
+
+.profile-container {
+    position: absolute;
+    bottom: -75px; 
+    left: 50px;
+    display: flex;
+    align-items: flex-end; /* 讓文字對齊頭像底部 */
+    gap: 20px;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    background: #fff url('image/cha-profile.jpg') center/cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    /*position: absolute;
+    bottom: -75px; /* 凸出一半（半徑） */
+    /*left: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);*/
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    flex-shrink: 0; /* 防止頭像被擠壓 */
+}
+
+.profile-info h1 {
+    /*font-family: "lilita One" , sans-serif;*/
+    font-size: 10rem; 
+    margin: 0;
+    color: #333;
+}
+
+.profile-info h1 { margin: 0; font-size: 1.8rem; color: #333; }
+.profile-info p { margin: 5px 0 0; color: #666; }
+
+/* 容器佈局 */
+/* 1. 統一所有容器的設定 */
+.container, .container_a {
+    max-width: 1000px;
+    margin: 50px auto; 
+    /* 這裡統一 padding：上下 30px，左右 40px */
+    padding: 40px 40px; 
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 確保內距不影響寬度計算 */
+}
+
+/* 讓更新日誌的容器維持置頂間距 */
+.container {
+    margin-top: 120px; 
+}
+
+/* 2. 統一標題樣式與位置 */
+.container h2, .container_a h2 {
+    font-family: "Chiron GoRound TC", sans-serif;
+    font-size: 25px;
+    color: #333;
+    /* 移除所有額外的 margin，讓位置完全由 container 的 padding 決定 */
+    margin: 0 0 20px 0; 
+    padding-left: 20px; /* 給裝飾條留空間 */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 3. 裝飾條設定 */
+.container h2::before, .container_a h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 6px;
+    height: 1.2em;
+    background-color: #8b79b1; /* 根據你的截圖調整紫色 */
+    border-radius: 10px;
+}
+
+/* 4. 移除 container_a 內文字的額外左位移 */
+.container_a p {
+    color: #555;
+    margin-left: 20px; /* 這裡原本是 30px，建議改回 20px 或 0 與標題對齊 */
+    margin-bottom: 20px;
+}
+
+/* 更新日誌 */
+.changelog {
+    /*padding: 20px;*/
+    border-bottom: 2px dashed #ddd;
+    margin-bottom: 30px;
+}
+
+/* 三等份角色區 */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.char-card {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.char-card:hover { transform: translateY(-5px); }
+
+.char-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 作品集與文章區樣式 */
+/* 詳情區域：改為白色背景，並設定為相對定位以放置三角形 */
+.details-section {
+    position: relative; /* 必要：讓三角形以此為基準定位 */
+    margin-top: 50px;
+    padding: 30px;
+    background: #eee; /* 改成白色較美觀 */
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+}
+
+/* 指向三角形的樣式 */
+.details-section::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* 讓三角形浮在方塊上方 */
+    
+    /* 核心：使用 JS 傳過來的變數 --triangle-left */
+    left: var(--triangle-left, 50%); 
+    
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #eee; /* 與背景色相同 */
+    transition: left 0.3s ease; /* 讓三角形滑動時有動畫 */
+}
+
+/* Footer 樣式 */
+footer {
+    background-color: #fff;
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between; /* 左右分開 */
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.footer-brand img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-socials {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    text-align: right;
+    color: #999;
+    font-size: 0.85rem;
+    align-self: flex-end; /* 靠右下 */
+}
+
+/* 委託區塊簡易樣式 */
+.commission-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px;
+    border: 2px solid #eee;
+    border-radius: 15px;
+}
+
+.notion-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #000; /* Notion 風格黑色 */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.notion-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* 更多圖片的網格佈局 */
+/* 更多圖片的網格佈局：設定為 6 欄基礎 */
+.extra-images-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 核心：切成 6 等份 */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* 根據 JS 傳入的 class 決定佔用幾欄 */
+.col-2 { grid-column: span 2; } /* 佔 1/3 寬度 */
+.col-3 { grid-column: span 3; } /* 佔 1/2 寬度 */
+.col-6 { grid-column: span 6; } /* 佔全寬 */
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* 調整 tabs 按鈕位置，確保它在圖片下方 */
+.tabs {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.gallery-text {
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    padding: 20px;
+    background: rgba(121, 177, 152, 0.1);
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* 讓圖片與文字格高度一致 */
+.extra-images-grid {
+    align-items: stretch; 
+}
+
+
+/* style.css */
+
+/* 燈箱背景 */
+.lightbox {
+    display: none; /* 預設隱藏 */
+    position: fixed; /* 固定在螢幕上 */
+    z-index: 9999; /* 確保在最上層 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 黑色半透明背景 */
+    cursor: zoom-out; /* 鼠標變成縮小圖示 */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+}
+
+/* 當燈箱顯示時，改為 flex 佈局 */
+.lightbox.show {
+    display: flex;
+}
+
+/* 放大後的圖片 */
+.lightbox-content {
+    max-width: 90%; /* 最大寬度 90% */
+    max-height: 90%; /* 最大高度 90% */
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    
+    /* 動態效果 */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* 當圖片顯示時，縮放回正常大小 */
+.lightbox.show .lightbox-content {
+    transform: scale(1);
+}
+
+/* 關閉按鈕 */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-lightbox:hover {
+    color: #ffcc00; /* 滑過時變色 */
+}
