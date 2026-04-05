@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThousanD</title>
+    <link rel="icon" href="image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&family=Lilita+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="splash-screen" class="splash-screen">
+        <img src="image/load.gif" alt="Welcome..." class="splash-gif">
+    </div>
+
+    <header class="hero-section">
+        <div class="cover-photo"></div>
+        <div class="profile-container">
+            <div class="profile-avatar"></div>
+            <div class="profile-info">
+                <h1>ThousanD</h1>
+                <p>網站還在施工 有錯跟我說一下 謝謝</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="changelog">
+            <h2>更新日誌</h2>
+            <ul>
+                <li>2026-04-01 新增角色介紹頁面</li>
+                <li>2026-03-31 網站架構建立</li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <main class="container_a">
+        <h2>原創角色 </h2>
+        <p>（點擊圖片查看更多）</p>
+
+        <section class="character-grid">
+            <div class="char-card" onclick="toggleDetails('char1', this)">
+                <img src="image/cha-speaking-water.PNG" alt="自設">
+                <h3>自設</h3>
+            </div>
+            <div class="char-card" onclick="toggleDetails('char2', this)">
+                <img src="image/jin-ep1-water.PNG" alt="梁燼">
+                <h3>梁燼</h3>
+            </div>
+            <div class="char-card" onclick="toggleDetails('char3', this)">
+                <img src="image/witch-hat-water.PNG" alt="Emevia Sephira">
+                <h3>Emevia Sephira</h3>
+            </div>
+        </section>
+
+
+        <section id="details-area" class="details-section" style="display:none;">
+            <div id="character-gallery" class="extra-images-grid"></div>
+            <div class="tabs">
+                <button onclick="showTab('portfolio')">作品集</button>
+                <button onclick="showTab('articles')">文章區</button>
+            </div>
+            <div id="portfolio" class="tab-content">作品集內容...</div>
+            <div id="articles" class="tab-content" style="display:none;">文章內容...</div>
+        </section>
+    </main>
+
+    <main class="container_a">
+        <section class="commission-section">
+            <h2>Commission Info</h2>
+            <p>目前開放委託中！詳細價目表與規範請參閱我的 Notion 頁面。</p>
+            <a href="https://resonant-rutabaga-604.notion.site/eaf75a4ba11f4c288637cf074475f098?source=copy_link"
+                target="_blank" class="notion-btn">查看詳細委託資訊 (Notion)</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <div class="footer-brand">
+                <img src="image/icon.png" alt="Logo">
+                <span>ThousanD</span>
+            </div>
+            <div>
+                grass10004610@gmail.com<br>
+                <div class="footer-socials">
+                    <a href="#">Facebook</a>
+                    <a href="#">Threads</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>© 2026 ThousanD. All rights reserved.<br>版權所有，未經許可請勿轉載使用。</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="放大圖片">
+    </div>
+</body>
+
+</html>
