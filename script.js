@@ -95,5 +95,5 @@ window.onload = function() {
     // 設定你想顯示的時間（2000 毫秒 = 2 秒）
     setTimeout(() => {
         splash.classList.add('fade-out');
-    }, 2000);
+    }, 10);
 };
